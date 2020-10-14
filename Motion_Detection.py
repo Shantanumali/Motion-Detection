@@ -12,11 +12,11 @@ while cap.isOpened():
     dilated = cv2.dilate(thresh, None, iterations=3)
     contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-    for contou in contours:
+    for contour in contours:
         #x,y is the top left contour point
-        (x, y, w, h) = cv2.boundingRect(contou)
+        (x, y, w, h) = cv2.boundingRect(contour)
 
-        if cv2.contourArea(contou) < 10000:
+        if cv2.contourArea(contour) < 10000:
             continue
         cv2.rectangle(f1, (x, y), (x+w, y+h), (0, 255, 0), 2)
         cv2.putText(f1, "Alert!", (20, 25), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
